@@ -1,4 +1,4 @@
-const fortunes = ["Your wish will be granted", "There is always a way if you're commited", "Happy news is on its way to you", "Your many hidden talents will become obvious to those around you", "Your heart is a place to draw true happiness"]
+
 
 const complimentBtn = document.getElementById("complimentButton")
 const fortuneBtn = document.getElementById("fortuneButton")
@@ -39,23 +39,21 @@ const moreFortunes = () => {
 }
 
 const deleteFortune = () => {
-    if (fortunes.length > 0) {
-        const randomIndex = Math.floor(Math.random() * fortunes.length)
-        const fortuneToDelete = fortunes[randomIndex]
+    
+        // const randomIndex = Math.floor(Math.random() * fortunes.length)
+        // const fortuneToDelete = fortunes[randomIndex]
         
-        axios.delete('http://localhost:4000/api/delete-fortune', { data: { fortune: fortuneToDelete } })
+        axios.delete('http://localhost:4000/api/delete-fortune')
             .then(response => {
                 console.log(response.data)
-                fortunes.splice(randomIndex, 1)
+                // fortunes.splice(randomIndex, 1)
                 alert("Fortune deleted successfully!")
             })
             .catch(error => {
                 console.error('Error deleting fortune:', error)
                 alert("Failed to delete fortune. Please try again.")
             })
-    } else {
-        alert("No fortunes to delete!")
-    }
+    
 }
 
 

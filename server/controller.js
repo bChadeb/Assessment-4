@@ -30,11 +30,14 @@ module.exports = {
     },
 
     deleteFortune: (req, res) => {
-        const index = req.params
-        if (index >= 0 && index < fortunes.length) {
-            fortune.splice(index, 1)
+        if (fortunes.length > 0) {
+            const randomIndex = Math.floor(Math.random() * fortunes.length)
+            const deletedFortune = fortunes[randomIndex] 
+            fortunes.splice(randomIndex, 1)
             res.status(200).send(deletedFortune)
-        } 
+        }  else {
+            res.status(400).send()
+        }
     }
 
 }
